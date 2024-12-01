@@ -32,8 +32,8 @@
             text-align: center;
         }
 
-        .input-field {
-            width: 100%;
+        .input-field, .select-field {
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
@@ -41,7 +41,7 @@
             font-size: 16px;
         }
 
-        .input-field:focus {
+        .input-field:focus, .select-field:focus {
             border-color: #4CAF50;
         }
 
@@ -75,6 +75,12 @@
             <input type="tel" id="telefone" class="input-field" placeholder="Seu Telefone" required>
             <input type="date" id="data" class="input-field" required>
             <input type="time" id="hora" class="input-field" required>
+            
+            <select id="quantidade" class="select-field" required>
+                <option value="" disabled selected>Quantidade de Conchas</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
 
             <button type="submit" class="button">Agendar Retirada</button>
         </form>
@@ -90,9 +96,10 @@
             const telefone = document.getElementById('telefone').value;
             const data = document.getElementById('data').value;
             const hora = document.getElementById('hora').value;
+            const quantidade = document.getElementById('quantidade').value;
 
             // Cria a mensagem formatada
-            const mensagem = `Olá, gostaria de agendar a retirada da concha.\n\nNome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\nData: ${data}\nHora: ${hora}`;
+            const mensagem = `Olá, gostaria de agendar a retirada da concha.\n\nNome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\nData: ${data}\nHora: ${hora}\nQuantidade de Conchas: ${quantidade}`;
 
             // URL para enviar a mensagem via WhatsApp
             const whatsappURL = `https://wa.me/5593991671354?text=${encodeURIComponent(mensagem)}`;
