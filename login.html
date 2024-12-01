@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <main>
+        <form id="loginForm">
+            <h1>Login</h1>
+            <input type="email" id="loginEmail" placeholder="E-mail" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <a href="cadastro.html">Não tem uma conta? Cadastre-se</a>
+    </main>
+
+    <!-- Carregando firebase.js como módulo -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module">
+        import { signIn } from './js/auth.js'; 
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+             // Debug: Verifique se as credenciais estão sendo passadas corretamente
+    console.log("Login solicitado com:", email, password);
+
+            signIn(email, password); // Chama a função signIn
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <main>
+        <form id="cadastroForm">
+            <h1>Cadastro</h1>
+            <input type="text" id="name" placeholder="Nome Completo" required>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <a href="login.html">Já tem uma conta? Faça login</a>
+    </main>
+
+    <!-- Carregando o script firebase.js como módulo -->
+    <script type="module" src="js/firebase.js"></script>  <!-- Carregar firebase.js como módulo -->
+    <script type="module" src="js/auth.js"></script>     <!-- Carregar auth.js como módulo -->
+    
+    <script type="module">
+        import { signUp } from './js/auth.js';  // Importa explicitamente a função signUp
+
+        document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            signUp(name, email, password);  // Chama a função signUp
+        });
+    </script>
+</body>
+</html>

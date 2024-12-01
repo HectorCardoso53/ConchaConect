@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .info-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .info-box h2 {
+            color: #333;
+        }
+
+        .info-box p {
+            color: #555;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bem-vindo ao Agendamento de Conchas</h1>
+
+    <div class="container">
+        <!-- Botão para Agendar a Retirada da Concha -->
+        <button class="button" onclick="window.location.href='agendamento.html'">Agendar Retirada da Concha</button>
+
+        <!-- Botão para Exibir Informações da Equipe -->
+        <button class="button" onclick="mostrarInformacoes()">Informações da Equipe</button>
+    </div>
+
+    <!-- Caixa de Informações da Equipe -->
+    <div id="infoEquipe" class="info-box" style="display: none;">
+        <h2>Equipe de Agendamento da Concha</h2>
+        <p><strong>Horário de Funcionamento:</strong><br>Segunda a Sexta: 08:00 - 18:00<br>Sábado: 08:00 - 12:00<br>Domingo: Fechado</p>
+        <p><strong>Dias da Semana para Agendamento:</strong><br>Segunda a Sexta-feira</p>
+        <p><strong>Contatos:</strong><br>Email: agendamentoconcha@exemplo.com<br>Telefone: (11) 1234-5678</p>
+    </div>
+
+    <script>
+        // Função para mostrar as informações da equipe
+        function mostrarInformacoes() {
+            var infoBox = document.getElementById("infoEquipe");
+            // Alterna a visibilidade da caixa de informações
+            if (infoBox.style.display === "none" || infoBox.style.display === "") {
+                infoBox.style.display = "block";
+            } else {
+                infoBox.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

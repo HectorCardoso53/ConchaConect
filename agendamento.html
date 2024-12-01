@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Retirada da Concha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .form-container h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            border-color: #4CAF50;
+        }
+
+        .button {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Agendar Retirada da Concha</h1>
+
+    <div class="form-container">
+        <h2>Preencha as informações abaixo para agendar a retirada da concha</h2>
+
+        <form id="agendamentoForm">
+            <input type="text" id="nome" class="input-field" placeholder="Seu Nome" required>
+            <input type="email" id="email" class="input-field" placeholder="Seu E-mail" required>
+            <input type="tel" id="telefone" class="input-field" placeholder="Seu Telefone" required>
+            <input type="date" id="data" class="input-field" required>
+            <input type="time" id="hora" class="input-field" required>
+
+            <button type="submit" class="button">Agendar Retirada</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('agendamentoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+
+            // Captura os valores do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const data = document.getElementById('data').value;
+            const hora = document.getElementById('hora').value;
+
+            // Cria a mensagem formatada
+            const mensagem = `Olá, gostaria de agendar a retirada da concha.\n\nNome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\nData: ${data}\nHora: ${hora}`;
+
+            // URL para enviar a mensagem via WhatsApp
+            const whatsappURL = `https://wa.me/5593991671354?text=${encodeURIComponent(mensagem)}`;
+
+            // Redireciona para o WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+
+</body>
+</html>
