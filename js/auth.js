@@ -30,7 +30,7 @@ export async function signIn(email, password) {
     alert("Login realizado com sucesso!");
 
     // Redireciona para a página de conteúdo
-    window.location.href = "conteudo.html";  
+    window.location.href = "agendamento.html";  
   } catch (error) {
     console.error("Erro ao fazer login:", error);
     

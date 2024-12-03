@@ -45,6 +45,19 @@
             border-color: #4CAF50;
         }
 
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row .input-field {
+            flex: 1; /* Define o comportamento padrão */
+        }
+
+        .form-row .input-field.endereco {
+            flex: 3; /* Campo maior */
+        }
+
         .button {
             padding: 15px 30px;
             background-color: #4CAF50;
@@ -70,8 +83,15 @@
         <h2>Preencha as informações abaixo para agendar a retirada da concha</h2>
 
         <form id="agendamentoForm">
-            <input type="text" id="nome" class="input-field" placeholder="Seu Nome" required>
-            <input type="email" id="email" class="input-field" placeholder="Seu E-mail" required>
+            <input type="text" id="nome" class="input-field" placeholder="Seu Nome Completo" required>
+            
+            <div class="form-row">
+                <input type="text" id="endereco" class="input-field endereco" placeholder="Endereço" required>
+                <input type="text" id="numeroCasa" class="input-field" placeholder="Número da Casa" required>
+            </div>
+
+            <input type="text" id="bairro" class="input-field" placeholder="Bairro" required>
+            <input type="text" id="cpf" class="input-field" placeholder="CPF" required>
             <input type="tel" id="telefone" class="input-field" placeholder="Seu Telefone" required>
             <input type="date" id="data" class="input-field" required>
             <input type="time" id="hora" class="input-field" required>
@@ -92,17 +112,22 @@
 
             // Captura os valores do formulário
             const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
+            const endereco = document.getElementById('endereco').value;
+            const numeroCasa = document.getElementById('numeroCasa').value;
+            const bairro = document.getElementById('bairro').value;
+            const cpf = document.getElementById('cpf').value;
             const telefone = document.getElementById('telefone').value;
             const data = document.getElementById('data').value;
             const hora = document.getElementById('hora').value;
             const quantidade = document.getElementById('quantidade').value;
 
             // Cria a mensagem formatada
-            const mensagem = `Olá, gostaria de agendar a retirada da concha.\n\nNome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\nData: ${data}\nHora: ${hora}\nQuantidade de Conchas: ${quantidade}`;
+            const mensagem = `Olá, gostaria de agendar a retirada da concha.\n\n` +
+                `Nome: ${nome}\nEndereço: ${endereco}, Nº ${numeroCasa}\nBairro: ${bairro}\n` +
+                `CPF: ${cpf}\nTelefone: ${telefone}\nData: ${data}\nHora: ${hora}\nQuantidade de Conchas: ${quantidade}`;
 
             // URL para enviar a mensagem via WhatsApp
-            const whatsappURL = `https://wa.me/5593991671354?text=${encodeURIComponent(mensagem)}`;
+            const whatsappURL = `https://wa.me/5593991344512?text=${encodeURIComponent(mensagem)}`;
 
             // Redireciona para o WhatsApp
             window.open(whatsappURL, '_blank');

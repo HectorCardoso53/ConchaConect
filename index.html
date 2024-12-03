@@ -4,15 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConchaConnect</title>
-    <link rel="stylesheet" href="css/index.css">
+    <style>
+        /* Estilo Geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9fc;
+            color: #333;
+        }
+
+        /* Cabeçalho */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            background-color: white;
+            color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Abas */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #4CAF50;
+            padding: 10px 0;
+        }
+
+        .tabs button {
+            flex: 1;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .tabs button:hover, .tabs button.active {
+            background-color: #45a049;
+        }
+
+        /* Conteúdo das Abas */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h2 {
+            margin-top: 0;
+        }
+
+        .tab-content p, .tab-content ul {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .tab-content ul {
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Cabeçalho -->
     <header>
-        <h1>Bem-vindo ao Site ConchaConnect</h1>
+        <h1>Bem-vindo ao ConchaConnect</h1>
+        <div class="buttons">
+            <button onclick="location.href='login.html'">Login</button>
+            <button onclick="location.href='cadastro.html'">Cadastrar</button>
+        </div>
     </header>
-    <main>
-        <button onclick="location.href='login.html'">Login</button>
-        <button onclick="location.href='cadastro.html'">Cadastrar</button>
-    </main>
+
+    <!-- Abas -->
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'sobre')">Sobre</button>
+        <button class="tab-link" onclick="openTab(event, 'comofunciona')">Como Funciona</button>
+        <button class="tab-link" onclick="openTab(event, 'diferenciais')">Diferenciais</button>
+        <button class="tab-link" onclick="openTab(event, 'atendimento')">Área de Atendimento</button>
+    </div>
+
+    <!-- Conteúdo das Abas -->
+    <div id="sobre" class="tab-content active">
+        <h2>Sobre a ConchaConnect</h2>
+        <p>
+            O ConchaConnect é o primeiro site de agendamento de conchas da cidade de Oriximiná, Pará. Nossa missão é oferecer um serviço prático, rápido e seguro para que você encontre a concha perfeita para o seu evento ou necessidade.
+        </p>
+        <p>
+            O site foi criado pelos alunos da escola EETEPA-Oriximiná, juntamente com Hector de Araújo Cardoso, discente da Universidade Federal do Oeste do Pará (UFOPA).
+        </p>
+    </div>
+
+    <div id="comofunciona" class="tab-content">
+        <h2>Como Funciona</h2>
+        <ul>
+            <li>Escolha a data e hora do agendamento.</li>
+            <li>Selecione o tipo de concha desejada.</li>
+            <li>Informe seus dados para confirmação.</li>
+            <li>Receba sua concha no dia e hora agendados.</li>
+        </ul>
+    </div>
+
+    <div id="diferenciais" class="tab-content">
+        <h2>Diferenciais</h2>
+        <ul>
+            <li>Equipe treinada e experiente.</li>
+            <li>Agendamento online fácil e rápido.</li>
+            <li>Atendimento personalizado para suas necessidades.</li>
+        </ul>
+    </div>
+
+    <div id="atendimento" class="tab-content">
+        <h2>Área de Atendimento</h2>
+        <p>Atendemos todos os bairros de Oriximiná.</p>
+        <p>
+            <strong>Contato:</strong><br>
+            Telefone: (93) 99134-4512<br>
+            E-mail: contato@conchasconnect@gmail.com
+        </p>
+        <h3>Agende agora e garanta sua concha!</h3>
+        <p>Equipe ConchaConnect agradece sua preferência!</p>
+    </div>
+
+    <!-- Script para controlar as abas -->
+    <script>
+        function openTab(event, tabId) {
+            // Esconde todo o conteúdo das abas
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove a classe 'active' de todos os botões
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(link => link.classList.remove('active'));
+
+            // Exibe o conteúdo da aba clicada
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
